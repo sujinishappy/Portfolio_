@@ -143,6 +143,9 @@
 .timeline-title.award{
     margin-top: 16vw;
 }
+.timeline.award2 {
+    height: 5vw;
+}
 .career-grid>.timeline-title.award{
     margin-top: 6.5vw;
 }
@@ -427,4 +430,5 @@
     opacity: 1;
     transform: translateY(0);
     }
+
 
