@@ -405,6 +405,7 @@
 }
 
 .slide img {
+    margin-top: 2vw;
   width: 72vw;       /* 메인 이미지 70vw */
   opacity: 0.3;
   transform: scale(1);
@@ -415,3 +416,4 @@
   opacity: 1;
   transform: scale(1);
 }
+
