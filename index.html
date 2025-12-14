@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAMSUJIN'Portfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="./img/logo.png">
+    <!-- <link rel="stylesheet" href="./css/common.css"> -->
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- <img class="grid" src="./img/intro.png" alt=""> -->
+        <!-- <div class="pointer"></div>
+        <button id="topButton" onclick="scrollToTop()">↑</button> -->
+        <div class="page">
+            <section id="cover"></section>
+            <!-- PROFILE / EDU / CAREER -->
+            <section class="section profile-section fade-in">
+                <div class="profile-grid">
+                    <!-- 왼쪽 소개 -->
+                    <div class="intro-block">
+                        <div>
+                            <div class="intro-text-main">
+                                예리하게 발견하고,<br />
+                                꼼꼼하게 설계하는<br />
+                                <span>기획자 남수진입니다.</span>
+                            </div>
+                            <!-- <div class="intro-text-sub">
+            사용자의 여정을 세심하게 바라보고<br />
+            비즈니스와 이용자의 균형을 맞추는 제품 기획을 합니다.
+            </div> -->
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-photo">
+                                <!-- 실제 프로필 이미지 경로로 교체 -->
+                                <img src="./img/증명사진.png" alt="Profile" />
+                            </div>
+                            <!-- <div class="profile-about">
+            작은 디테일까지 놓치지 않고 보는 시선을 바탕으로<br />
+            서비스의 목적과 사용자의 상황을 함께 고민하며<br />
+            명확한 구조를 만드는 기획자입니다.
+            </div> -->
+                            <div class="profile-meta">
+                                <div class="profile-meta-row">
+                                    <span>생년월일</span>
+                                    <div>2001. 04. 27</div>
+                                </div>
+                                <div class="profile-meta-row">
+                                    <span>연락처</span>
+                                    <div>010-8411-4746</div>
+                                </div>
+                                <div class="profile-meta-row">
+                                    <span>이메일</span>
+                                    <div>suzie27@naver.com</div>
+                                </div>
+                            </div>
+                            <div class="profile-buttons">
+                                <a href="./pdf/자기소개서.pdf" download="남수진_자기소개서.pdf" class="pdf-btn"><button class="btn-outline"><img src="./img/arrow.png"> 자기소개서 다운받기</button></a>
+                                <a href="./pdf/이력서.pdf" download="남수진_이력서.pdf" class="pdf-btn"><button class="btn-outline"><img src="./img/arrow.png">이력서 다운로드</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 가운데 학력 -->
+                    <div class="timeline-block">
+                        <div class="timeline-title">학력사항</div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2026.02</div>
+                                    <div class="timeline-desc">
+                                        디지털미디어디자인학과 전공심화 졸업
+                                    </div>
+                                </div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2024.03</div>
+                                    <div class="timeline-desc">
+                                        계원예술대학교 디지털미디어디자인학과 전공심화
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2024.02</div>
+                                    <div class="timeline-desc">
+                                        디지털미디어디자인과 졸업
+                                    </div>
+                                </div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2023.03</div>
+                                    <div class="timeline-desc">
+                                        프로그래밍 세부전공 선택
+                                    </div>
+                                </div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2022.03</div>
+                                    <div class="timeline-desc">
+                                        계원예술대학교 디지털미디어디자인과
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2020.02</div>
+                                    <div class="timeline-desc">
+                                        산본고등학교 졸업
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="timeline-title award">수상 경력</div>
+                        <div class="timeline award">
+                            <div class="timeline-item award">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2025.07</div>
+                                    <div class="timeline-desc">
+                                        실감미디어 경진대회 ‘우수상’
+                                        <div class="career-desc2">[VR로 만나는 사라져가는 작은 생명]</div>
+                                        <div class="career-desc2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item award">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2024.07</div>
+                                    <div class="timeline-desc">
+                                        커뮤니케이션디자인 국제 공모전 ‘대상’
+                                        <div class="career-desc2">[고등학생들의 교내 단합 커뮤니티 서비스 ‘고교씽’]</div>
+                                        <div class="career-desc2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item award">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2023.11</div>
+                                    <div class="timeline-desc">
+                                        2023학년도 졸업작품 심사 학과 ‘우수상’
+                                        <div class="career-desc2">[소아비만 아동을 위한 식습관 개선 서비스 ‘ME:O’]</div>
+                                        <div class="career-desc2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item award">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2025.07</div>
+                                    <div class="timeline-desc">
+                                        커뮤니케이션디자인 국제 공모전 ‘입선’
+                                        <div class="career-desc2">[ADHD 환자 일상 개선 서비스 ‘오똑’]</div>
+                                        <div class="career-desc2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 오른쪽 활동 / 수상 -->
+                    <div class="career-grid">
+                        <div class="career-block">
+                            <div class="career-title">활동 내역</div>
+                            <div class="career-timeline">
+                                <div class="career-item">
+                                    <div class="career-dot"></div>
+                                    <div class="timeline-wrap">
+                                        <div class="career-year">2023.03~</br>2026.02</div>
+                                        <div class="career-desc">
+                                            대학생 청소년교육지원장학생
+                                            <div class="career-desc2">· 청소년 입시 미술 강의 및 진로 탐색 강의</div>
+                                            <div class="career-desc2">· 시니어 회화 미술 강의</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="career-item">
+                                    <div class="career-dot"></div>
+                                    <div class="timeline-wrap">
+                                        <div class="career-year">2025.09~
+                                            </br>2025.12</div>
+                                        <div class="career-desc">
+                                            2025 계원예술대학교 디지털미디어디자인학과
+                                            <br />전공심화 졸준위 공간연출팀
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="career-item">
+                                    <div class="career-dot"></div>
+                                    <div class="timeline-wrap">
+                                        <div class="career-year">2025.09~
+                                            </br>2025.10</div>
+                                        <div class="career-desc">
+                                            평생교육원 AI 툴 강의 보조강사
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="career-item">
+                                    <div class="career-dot"></div>
+                                    <div class="timeline-wrap">
+                                        <div class="career-year">2024.06~
+                                            </br>2024.08</div>
+                                        <div class="career-desc">
+                                            혁신 융합 대학 XR 학과체험 보조강사
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="career-item">
+                                    <div class="career-dot"></div>
+                                    <div class="timeline-wrap">
+                                        <div class="career-year">2024.04~</br>2025.02</div>
+                                        <div class="career-desc">
+                                            실감미디어 혁신 융합 대학 COSS 서포터즈 활동
+                                            <div class="career-desc2">· 프로그램 기획, 회의록 문서 제작</div>
+                                            <div class="career-desc2">· 카드뉴스 제작, 릴스 제작, 포스터 제작</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="timeline-title award"></div>
+                        <div class="timeline award">
+                            <div class="timeline-item award">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2023</div>
+                                    <div class="timeline-desc">
+                                        자바스크립트프로그래밍 ‘연합 PT 우수작 선정
+                                        <div class="career-desc2">-</div>
+                                        <div class="career-desc2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item award">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-wrap">
+                                    <div class="timeline-year">2022</div>
+                                    <div class="timeline-desc">
+                                        콘텐츠 기획 ‘연합 PT 우수작 선정
+                                        <div class="career-desc2 award">3D 디자인 ‘연합 PT 우수작 선정</div>
+                                        <div class="career-desc2 award">웹퍼블리싱 ‘연합 PT 우수작 선정</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section class="section projects-section fade-in">
+                <div class="projects-header">간결하지만 핵심적인 Projects-</div>
+                <div class="wraps">
+                    <div class="projects-subtitle">예리한 기획서</div>
+                    <div class="project-grid">
+                        <!-- 1 -->
+                        <a href="https://drive.google.com/file/d/1sAHaOzUOJGftyi0C1u1TiYDANArjERGJ/view?usp=sharing">
+                            <article class="project-card">
+                                <div class="project-thumb">
+                                    <img src="./img/cover.png" alt="pdf 포트폴리오" />
+                                </div>
+                                <div class="project-body">
+                                    <div class="project-caption">5개의 프로젝트 한눈에 보기</div>
+                                    <div class="project-name">포트폴리오 ZIP</div>
+                                </div>
+                            </article>
+                        </a>
+                        <a href="./gogossing.html" target="_blank" rel="noopener noreferrer">
+                            <article class="project-card">
+                                <div class="project-thumb">
+                                    <img src="./img/project-gyogosing.png" alt="고교씽" />
+                                </div>
+                                <div class="project-body">
+                                    <div class="project-caption">고등학생들의 교내 단합 커뮤니티 플랫폼 서비스</div>
+                                    <div class="project-name">고교씽</div>
+                                </div>
+                            </article>
+                        </a>
+                        <!-- 2 -->
+                         <a href="./meo.html" target="_blank" rel="noopener noreferrer">
+                            <article class="project-card">
+                                <div class="project-thumb">
+                                    <img src="./img/project-meo.png" alt="Me:O" />
+                                </div>
+                                <div class="project-body">
+                                    <div class="project-caption">소아비만 아동을 위한 식습관 개선 서비스</div>
+                                    <div class="project-name">Me:O</div>
+                                </div>
+                            </article>
+                        </a>
+                        <a href="./yogapick.html" target="_blank" rel="noopener noreferrer">
+                            <article class="project-card">
+                                <div class="project-thumb">
+                                    <img src="./img/project-yoga.png" alt="요가픽" />
+                                </div>
+                                <div class="project-body">
+                                    <div class="project-caption">혼자 요가를 하는 사용자들을 위한 AR 서비스</div>
+                                    <div class="project-name">요가픽</div>
+                                </div>
+                            </article>
+                        </a>
+                        <!-- 3 -->
+                        
+                        <!-- 4 -->
+                        <a href="./kakako.html" target="_blank" rel="noopener noreferrer">
+                            <article class="project-card">
+                                <div class="project-thumb">
+                                    <img src="./img/project-KakaoTalk.png" alt="KakaoTalk" />
+                                </div>
+                                <div class="project-body">
+                                    <div class="project-caption">카카오톡 채팅 탭 리뉴얼 제안서</div>
+                                    <div class="project-name">KakaoTalk</div>
+                                </div>
+                            </article>
+                        </a>
+                        <!-- 5 -->
+                        <a href="./oddock.html" target="_blank" rel="noopener noreferrer">
+                            <article class="project-card">
+                                <div class="project-thumb">
+                                    <img src="./img/project-oddock.png" alt="오똑" />
+                                </div>
+                                <div class="project-body">
+                                    <div class="project-caption">ADHD 환자 일상 개선 서비스</div>
+                                    <div class="project-name">오똑</div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STORYBOARD -->
+            <section class="section storyboard-section fade-in">
+                <div class="wraps">
+                    <div class="storyboard-title">꼼꼼한 스토리보드</div>
+                    <div class="storyboard-grid">
+                        <a href="./pdf/고교씽_스토리보드.pdf" download="고교씽_스토리보드.pdf" class="pdf-btn">
+                            <article class="story-card">
+                                <div class="story-thumb">
+                                    <img src="./img/story-gogossing.png" alt="고교씽 스토리보드" />
+                                </div>
+                                <div class="story-label">고교씽 스토리보드</div>
+                            </article>
+                        </a>
+                        <a href="./pdf/오똑_스토리보드.pdf" download="오똑_스토리보드.pdf" class="pdf-btn">
+                            <article class="story-card">
+                                <div class="story-thumb">
+                                    <img src="./img/story-oddock.png" alt="오똑 스토리보드" />
+                                </div>
+                                <div class="story-label">오똑 스토리보드</div>
+                            </article>
+                        </a>
+                        <a href="./pdf/카카오톡_스토리보드.pdf" download="카카오톡_스토리보드.pdf" class="pdf-btn">
+                            <article class="story-card">
+                                <div class="story-thumb">
+                                    <img src="./img/story-kakao.png" alt="카카오톡 스토리보드" />
+                                </div>
+                                <div class="story-label">카카오톡 리뉴얼 스토리보드</div>
+                            </article>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VALUES -->
+            <!-- <section class="section values-section fade-in">
+                <div class="values-heading">저는 이런 가치관을 </br>가지고 있습니다.</div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div>
+                            <div class="value-title">🧭 이해를 우선하는 문제 해결 중심 사고</div>
+                            <div class="value-text">
+                                기능을 단순히 나열하는 것이 아니라 작동 원리를 단계적으로 이해하고 설계하여 
+논리적이고 설득력 있는 기획을 만들어냅니다. 문제를 깊이 있게 파악하고 근본적인 
+해결책을 제시하는데 힘을 씁니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="value-card">
+                        <div>
+                            <div class="value-title">💡 반복 개선을 즐기는 실험적 태도</div>
+                            <div class="value-text">
+                                완벽한 결과를 한 번에 만들기보다는 테스트와 피드백을 통해 점진적으로 완성도를 
+높이는 과정을 중요하게 생각합니다. 시각적으로 직접 확인하고 개선해 나가는 방식을 통해 유연하고 현실성 있는 기획을 완성해 갑니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="value-card">
+                        <div>
+                            <div class="value-title">✨ 심미성과 실용성을 동시에 중시하는 균형감각</div>
+                            <div class="value-text">
+                                디자인의 완성도와 기술적 실현 가능성 사이의 균형을 중요하게 생각합니다. 
+시각적으로 아름다우면서도 실제 구현 가능한 기획을 지향해, 
+결과물이 사용자 경험으로 자연스럽게 연결될 수 있도록 설계합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="value-card">
+                        <div>
+                            <div class="value-title">🤝 구조적 사고를 바탕으로 한 협업 친화성</div>
+                            <div class="value-text">
+                                명확한 그리드와 시각적 언어를 통해 기획 의도를 구체적으로 표현할 수 있습니다. 
+이를 통해 팀원 간의 이해를 높이고, 협업 과정에서 방향성을 명확히 제시할 수 있는 
+기획 역량을 갖추고 있습니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <div class="footer-inner">
+                    <div class="footer-left">
+                        <div class="footer-avatar"><img src="./img/logo.png"></div>
+                        <div>
+                            <div class="footer-main">Thank You For Watching</div>
+                            <div class="footer-copy">© 2025 NAMSUJIN. All Rights Reserved.</div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
