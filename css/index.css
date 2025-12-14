@@ -1,0 +1,430 @@
+.label {
+    font-size: 1vw;
+    letter-spacing: 0.08em;
+    color: #777;
+}
+.title-xl {
+    font-size: calc(100vw * 155 / 1920);
+    font-family: 'Pretendard_Regular';
+    letter-spacing: -0.04em;
+}
+.title-md {
+    font-size: 1.6vw;
+    font-weight: 600;
+    margin-bottom: 1vw;
+}
+.title-sm {
+    font-size: 1.1vw;
+    font-weight: 600;
+    margin-bottom: 0.5vw;
+}
+/* 상단 Hero */
+#cover {
+    position: relative;
+    width: 100vw;
+    height: 54vw;
+    padding-top: 6vw;
+    overflow: hidden;
+    margin-bottom: 10vw;
+    background-image: url('../img/cover.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+    /* 프로필 / 학력 / 활동 */
+.profile-section {
+    margin-top: 12VW; /* hero와 살짝 겹치도록 */
+    padding-bottom: 4vw;
+}
+.profile-grid {
+    display: grid;
+    height: 60vw;
+    grid-template-columns: 27vw 31vw 31vw;
+    column-gap: 1vw;
+    align-items: flex-start;
+}
+    /* 왼쪽 – 소개 & 사진 */
+.intro-block {
+    display: flex;
+    flex-direction: column;
+}
+.intro-text-main {
+    font-size: calc(100vw * 40 / 1920);
+    font-family: 'Pretendard_Regular';
+    line-height: 1.2;
+}
+/* .intro-text-sub {
+    font-size: 0.9vw;
+    color: #666;
+} */
+.intro-text-main >span{
+        font-family: 'Pretendard_Bold';
+}
+.profile-card {
+    margin-top: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+.profile-photo {
+    width: 16vw;
+    height: 19vw;
+    /* border-radius: 0.8vw;
+    overflow: hidden;
+    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.18); */
+}
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile-about {
+    font-size: 0.8vw;
+    color: #444;
+}
+.profile-meta {
+    margin-top: 2vw;
+    font-size: calc(100vw * 20 / 1920);
+    font-family: 'Pretendard_Medium';
+}
+.profile-meta-row {
+    display: flex;
+    gap: 1vw;
+    margin-bottom: 1vw;
+}
+.profile-meta-row span:first-child {
+    width: 4vw;
+    color: #767676;
+}
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+}
+.btn-outline {
+    display: flex;
+    width: 14vw;
+    padding: 1vw 0.8vw;
+    border-radius: 0.7vw;
+    border: 0.08vw solid #ddd;
+    background-color: #fff;
+    color: #3B3B3B;
+    font-size: calc(100vw * 18.5 / 1920);
+    font-family: 'Pretendard_Medium';
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.btn-outline>img{
+    width: 1.2vw;
+    margin: 0 1vw;
+}
+.btn-outline:hover {
+    background-color: #ffece3;
+    transform: translateY(-0.1vw);
+    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.08);
+}
+    /* 가운데 – 학력 타임라인 */
+.timeline-block {
+    position: relative;
+}
+.timeline-title {
+    font-size: calc(100vw * 22/ 1920);
+    font-family: 'Pretendard_SemiBold';
+    margin-bottom: 1.5vw;
+}
+.timeline {
+    position: relative;
+    height: 16.5vw;
+    margin-left: 1vw;
+    border-left: 0.08vw solid #d5d5d5;
+}
+.timeline-title.award{
+    margin-top: 16vw;
+}
+.career-grid>.timeline-title.award{
+    margin-top: 6.5vw;
+}
+.timeline-item {
+    position: relative;
+    margin-left: 2vw;
+    margin-bottom: 4vw;
+    font-size: calc(100vw * 22/ 1920);
+    font-family: 'Pretendard_Medium';
+}
+.timeline-wrap{
+    display: flex;
+    margin-bottom: 0.5vw;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+.timeline-dot {
+    position: absolute;
+    left: -2.45vw;
+    width: .8vw;
+    height: .8vw;
+    border-radius: 50%;
+    background-color: #504242;
+}
+.timeline-year {
+    color: #797979;
+    margin-bottom: 0.2vw;
+}
+.timeline-desc {
+    margin-left: .8vw;    
+}
+/*오른쪽 – 활동 & 수상 */
+.career-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2.5vw;
+}
+.career-block {
+    position: relative;
+}
+.career-title {
+    font-size: calc(100vw * 22/ 1920);
+    font-family: 'Pretendard_SemiBold';
+    margin-bottom: 1.5vw;
+}
+.career-timeline {
+    position: relative;
+    height: 22vw;
+    margin-left: 1vw;
+    border-left: 0.08vw solid #d5d5d5;
+}
+.career-item {
+    position: relative;
+    margin-left: 2vw;
+    margin-bottom: 2.5vw;
+    font-size: calc(100vw * 22/ 1920);
+    font-family: 'Pretendard_Medium';
+}
+.career-item:last-child {
+    margin-bottom: 0;
+}
+.career-dot {
+    position: absolute;
+    left: -2.45vw;
+    width: .8vw;
+    height: .8vw;
+    border-radius: 50%;
+    background-color: #504242;
+}
+.career-year {
+    color: #797979;
+    margin-bottom: 0.2vw;
+}
+.career-desc {
+    margin-left: .8vw;   
+}
+.career-desc2{
+    margin-top: .8vw;
+    font-size: calc(100vw * 20/ 1920);
+    font-family: 'Pretendard_Medium';   
+    color: #676767;
+}
+.career-desc2:last-child{
+    margin-top: .2vw;
+}
+.timeline-item.award{
+    margin-bottom: 1.2vw;
+}
+.timeline.award {
+    height: 14vw;
+}
+.career-desc2.award{
+    margin-top: .6vw;
+    font-size: calc(100vw * 22/ 1920);
+    font-family: 'Pretendard_Medium';   
+    color: #3B3B3B;
+}
+    /* 프로젝트 섹션 */
+    .wraps{
+        display: flex;
+    }
+    .projects-section {
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+    }
+
+    .projects-header {
+    font-size: calc(100vw * 40/ 1920);
+    font-family: 'Pretendard_Bold';   
+    margin-bottom: 6vw;
+    }
+
+    .projects-subtitle {
+    font-size: calc(100vw * 30/ 1920);
+    font-family: 'Pretendard_SemiBold'; 
+    margin-right: 7vw;
+    }
+
+    .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8vw;
+    width: 73.5vw;
+    height: 42vw;
+    }
+
+    .project-card {
+    background-color: #fff;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0 0.6vw 1.4vw rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    }
+
+    .project-thumb {
+    width: 100%;
+    height: 14vw;
+    background-color: #ccc;
+    overflow: hidden;
+    }
+
+    .project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .project-body {
+    padding: 1.1vw 1.2vw 2.5vw;
+    }
+
+    .project-name {
+    font-size: calc(100vw * 23/ 1920);
+    font-family: 'Pretendard_SemiBold';   
+    }
+
+    .project-caption {
+    font-size: calc(100vw * 20/ 1920);
+    font-family: 'Pretendard_Medium'; 
+    color: #7C7C7C;
+    margin-bottom: 0.4vw;
+    }
+
+    .project-card:hover {
+    transform: translateY(-0.4vw);
+    box-shadow: 0 1vw 2.2vw rgba(0, 0, 0, 0.12);
+    }
+
+    /* 스토리보드 */
+    .storyboard-section {
+    padding-top: 5vw;
+    padding-bottom: 4vw;
+    }
+
+    .storyboard-title {
+    font-size: calc(100vw * 30/ 1920);
+    font-family: 'Pretendard_SemiBold'; 
+    margin-right: 4vw;
+    }
+
+    .storyboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8vw;
+    width: 73.5vw;
+    height: 20vw;
+    }
+
+    .story-card {
+    background-color: #fff;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0 0.6vw 1.4vw rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    }
+
+    .story-thumb {
+    width: 100%;
+    height: 14vw;
+    background-color: #ccc;
+    overflow: hidden;
+    }
+
+    .story-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .story-label {
+    padding: 1.1vw 1.2vw 4vw;
+    font-size: calc(100vw * 23/ 1920);
+    font-family: 'Pretendard_SemiBold';  
+    }
+
+    .story-card:hover {
+    transform: translateY(-0.3vw);
+    box-shadow: 0 0.9vw 1.8vw rgba(0, 0, 0, 0.1);
+    }
+
+    /* 가치관 섹션 */
+    .values-section {
+    padding-top: 12vw;
+    padding-bottom: 12vw;
+    }
+
+    .values-heading {
+    font-size: calc(100vw * 40/ 1920);
+    font-family: 'Pretendard_Bold';  
+    margin-bottom: 2vw;
+    }
+
+    .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6vw 2vw;
+    }
+
+    .value-card {
+    background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.4) 60%,
+    rgba(255, 255, 255, 0) 100%
+);
+    /* border-radius: 15vw; */
+    /* box-shadow: 0 0.6vw 1.6vw rgba(0, 0, 0, 0.05); */
+    padding: 3vw 1.8vw;
+    display: flex;
+    gap: 1vw;
+    align-items: flex-start;
+    }
+
+    .value-icon {
+    font-size: calc(100vw * 35/ 1920);
+    }
+
+    .value-title {
+    font-size: calc(100vw * 28/ 1920);
+    font-family: 'Pretendard_SemiBold';  
+    margin-bottom: 0.4vw;
+    }
+
+    .value-text {
+    font-size: calc(100vw * 21/ 1920);
+    font-family: 'Pretendard_Regular';  
+    line-height: 1.2;
+    margin-top: 1vw;
+    }
+
+    /* 스크롤 페이드 인터랙션 */
+    .fade-in {
+    opacity: 100;
+    transform: translateY(1.8vw);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+    }
+

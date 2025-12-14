@@ -1,0 +1,417 @@
+/* 핸드폰 모형들 */
+.gogo-right-inner>img{
+  width: 70vw;
+}
+.gogo-phones {
+  position: absolute;
+  right: 0vw;
+  bottom: 0vw;
+  width: 40vw;
+  height: 50vw;
+  pointer-events: none;
+}
+.gogo-phone {
+  position: absolute;
+  width: 37vw;
+  height: auto;
+  /* filter: drop-shadow(0 1.2vw 1.8vw rgba(0, 0, 0, 0.4)); */
+  /* opacity: 0; */
+  right: 1vw;
+  bottom: 0;
+  transform: rotate(0deg);
+  animation: floatPhone 10s infinite;
+}
+@keyframes floatPhone {
+  0% {
+    transform: translateY(0) rotate(-0deg);
+  }
+  50% {
+    transform: translateY(-1vw) rotate(-0deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-0deg);
+  }
+}
+/* @keyframes floatPhoneSub {
+      0%   { transform: translateY(0) rotate(-2deg); }
+      50%  { transform: translateY(-0.4vw) rotate(-2deg); }
+      100% { transform: translateY(0) rotate(-2deg); }
+    } */
+
+/* .gogo-hero.visible .phone-main {
+      animation: floatPhone 4s ease-in-out infinite;
+    }
+
+    .gogo-hero.visible .phone-sub {
+      animation: floatPhoneSub 4.3s ease-in-out infinite;
+    } */
+#overview{
+  height: 40vw;
+  background-image : url('../img/gogosing_overview.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+#bg01{
+  width: 100vw;
+  height: 56vw;
+  background-image : url('../img/go_bg01.png');
+  background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+/* 바깥 래퍼 */
+#bg02{
+  display: grid;
+  place-items: center;
+  height: 30vw;
+  padding-top: 6vw;
+}
+
+/* 안쪽 이미지 3개 정렬 */
+.bg02{
+  display: flex;
+  justify-content: center;
+}
+
+.bg02 > img{
+  margin: 0 5.5vw;
+  width: 15.5vw;
+}
+.bg02-line{
+  height: 8vw;
+}
+/* 공통: 처음엔 안 보이게 + 살짝 아래 */
+#bg02 .bg02 img,
+#bg02 .bg02-line{
+  opacity: 0;
+  transform: translateY(2vw);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* active가 되면 나타나게 */
+#bg02.active .bg02 img,
+#bg02.active .bg02-line{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 순차 등장 딜레이 */
+#bg02.active .bg02 img:nth-child(1){
+  transition-delay: 0s;
+}
+
+#bg02.active .bg02 img:nth-child(2){
+  transition-delay: 0.2s;
+}
+
+#bg02.active .bg02 img:nth-child(3){
+  transition-delay: 0.4s;
+}
+
+/* 마지막 라인 이미지가 가장 나중에 */
+#bg02.active .bg02-line{
+  transition-delay: 0.6s;
+}
+#bg03{
+  width: 100vw;
+  height: 54vw;
+  background-image : url('../img/go_bg03.png');
+  background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+#plan{
+  /* margin-top: 5vw; */
+  width: 100vw;
+  height: 175vw;
+  background-image : url('../img/go-plan.png');
+  background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  border-radius: 10vw 10vw 0 0;
+  /* 처음엔 아래로 내려가 있음 */
+  transform: translateY(20vw);
+  opacity: 0;
+  /* 부드러운 모션 */
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+/* active 되면 올라옴 */
+#plan.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+/* 와이어프레임 슬라이더 감싸는 부분 */
+#plan_wireframe{
+  margin-top: 58vw;
+  width: 100vw;
+  overflow: hidden;    /* 화면에 보이는 부분만 */
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+}
+
+/* 실제로 움직이는 트랙 */
+#plan_wireframe .wire-track{
+  display: flex;
+  gap: 2vw;
+  /* 오른쪽 → 왼쪽으로 계속 이동 */
+  animation: wire-scroll 30s linear infinite;
+}
+
+/* 와이어프레임 하나하나 */
+#plan_wireframe img{
+  width: 11vw;        /* 화면에 약 8개 정도 보이게 (11×8=88vw + 여백) */
+  flex-shrink: 0;
+  background: #fff;
+}
+
+/* 부드러운 무한 스크롤 */
+@keyframes wire-scroll{
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    /* 이미지 세트를 두 번 넣었으니까 50% 만큼만 이동하면
+       다시 처음과 자연스럽게 이어짐 */
+    transform: translateX(-50%);
+  }
+}
+#cover{
+  position: relative;
+  width: 100vw;
+  height: 50vw;
+  background-image : url('../img/cover-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+.gogo-phone2 {
+  position: absolute;
+  width: 32vw;
+  height: auto;
+  right: 25vw;
+  bottom: 10vw;
+  transform: rotate(0deg);
+  animation: floatPhone 6s infinite;
+}
+.gogo-phone3{
+  position: absolute;
+  width: 35vw;
+  height: auto;
+  /* filter: drop-shadow(0 1.2vw 1.8vw rgba(0, 0, 0, 0.4)); */
+  /* opacity: 0; */
+  right: 4vw;
+  bottom: -8vw;
+  transform: rotate(0deg);
+  animation: floatPhone2 6s infinite;
+}
+@keyframes floatPhone2 {
+  0% {
+    transform: translateY(0) rotate(-0deg);
+  }
+  40% {
+    transform: translateY(-2vw) rotate(-0deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-0deg);
+  }
+}
+#service{
+  height: 280vw;
+}
+.service_design{
+  margin-top: 14vw;
+  height: 54vw;
+  background-image : url('../img/serivce_design-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+.service01{
+  margin-top: 14vw;
+  width: 100vw;
+  height: 57vw;
+  background-image : url('../img/design-01.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.service01{
+  width: 100vw;
+  /* 필요하면 높이, 여백 등 추가 */
+  padding: 5vw 0;
+}
+
+/* 이미지들이 가로로 나열되도록 */
+.service01-screen{
+  margin-top: 14vw;
+  margin-left: 38vw;
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+}
+
+/* 공통: 처음에는 살짝 왼쪽에 + 투명 */
+.service01-screen>img{
+  width: 18vw;
+  opacity: 0;
+  transform: translateX(-3vw);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* active가 붙으면 전부 보이도록 */
+.service01.active .service01-screen img{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 순차 등장 딜레이 (왼쪽 → 오른쪽) */
+.service01.active .service01-screen img:nth-child(1){
+  transition-delay: 0s;
+}
+.service01.active .service01-screen img:nth-child(2){
+  transition-delay: 0.15s;
+}
+.service01.active .service01-screen img:nth-child(3){
+  transition-delay: 0.3s;
+}
+.service01.active .service01-screen img:nth-child(4){
+  transition-delay: 0.45s;
+}
+.service02{
+  margin-top: 12vw;
+  width: 100vw;
+  height: 92vw;
+  background-image : url('../img/design-02.png');
+  background-size: cover;
+  background-position: center;
+}
+.service03{
+  position: relative;
+  margin-top: 12vw;
+  width: 100vw;
+  height: 92vw;
+}
+
+.three-bg-section{
+  width: 100vw;
+  height: 160vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 박스 묶음 */
+.three-bg-row{
+  display: flex;
+  width: 120vw;
+  height: 100%;
+}
+
+/* 공통 스타일 */
+.three-bg-box{
+  height: 100%;
+  width: 0;
+  flex-shrink: 0;
+  border-radius: 0 6vw 0 0;
+  transition: width 0.7s linear; /* ← 균등 속도로 쭉 움직임 */
+  position: relative;
+}
+
+/* ░ 회색 단계 + 겹침 + Z 순서 ░ */
+
+/* 1번 박스: 가장 위 */
+.box-1{
+  background-color: #ffffff;
+  margin-left: -8vw;           /* 훨씬 더 겹침 강화 */
+  z-index: 3;
+}
+
+/* 2번 박스: 중간 */
+.box-2{
+  background-color: #dcdcdc;
+  margin-left: -10vw;          /* 더 세게 겹침 */
+  z-index: 2;
+}
+
+/* 3번 박스: 가장 아래 */
+.box-3{
+  background-color: #c2c2c2;
+  margin-left: -12vw;          /* 제일 많이 겹침 */
+  z-index: 1;
+}
+
+/* 활성화 시 펼쳐지는 너비 */
+.three-bg-section.active .box-1{
+  width: 40vw;
+  transition-delay: 0s;
+}
+
+.three-bg-section.active .box-2{
+  width: 45vw;
+  transition-delay: 0.2s;
+}
+
+.three-bg-section.active .box-3{
+  width: 45vw;
+  transition-delay: 0.4s;
+}
+.service03>img{
+  position: absolute;
+  width: 82vw;
+  top: 8vw;
+  left: 9vw;
+  z-index: 5;
+}
+#ut{
+  position: relative;
+  margin-top: -5vw;
+  width: 100vw;
+  height: 290vw;
+  z-index: 10;
+  background-image : url('../img/ut-bg.png');
+  background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  border-radius: 10vw 10vw 0 0;
+}
+
+:root {
+  --slide-width: 72vw;   /* 메인 슬라이드 실제 너비 */
+  --slide-gap: 4vw;      /* 슬라이드 사이 간격 */
+}
+
+.loop-slider {
+  margin-top: 24vw;
+  width: 100vw;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: var(--slide-gap);
+  transition: transform 0.6s ease-in-out;
+
+  /* ✅ 첫 슬라이드가 처음부터 '가운데' 오게 기준 잡기 */
+  padding-left: calc((100vw - var(--slide-width)) / 2);
+}
+
+.slide {
+  flex: 0 0 var(--slide-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 72vw;       /* 메인 이미지 70vw */
+  opacity: 0.3;
+  transform: scale(1);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.slide.active img {
+  opacity: 1;
+  transform: scale(1);
+}

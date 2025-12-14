@@ -1,0 +1,36 @@
+.gogo-phones {
+  position: absolute;
+  right: 3vw;
+  bottom: 4vw;
+  width: 60vw;
+  height: 70vw;
+  pointer-events: none;
+}
+.gogo-phone {
+  position: absolute;
+  width: 50vw;
+  height: auto;
+  /* filter: drop-shadow(0 1.2vw 1.8vw rgba(0, 0, 0, 0.4)); */
+  /* opacity: 0; */
+  right: 1vw;
+  bottom: 0;
+  transform: rotate(0deg);
+  animation: floatPhone 10s infinite;
+}
+@keyframes floatPhone {
+  0% {
+    transform: translateY(0) rotate(-0deg);
+  }
+  50% {
+    transform: translateY(-1vw) rotate(-0deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-0deg);
+  }
+}
+.gogo-right-inner>img{
+  width: 70vw;
+}
+#overview>img{
+    width: 100vw;
+}

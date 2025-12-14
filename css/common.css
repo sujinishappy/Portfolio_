@@ -1,0 +1,426 @@
+@font-face {
+font-family: "Pretendard_ExtraBold";
+src: url("../img/fonts/Pretendard_ExtraBold.otf");
+}
+@font-face {
+font-family: "Pretendard_Black";
+src: url("../img/fonts/Pretendard-Black.otf");
+}
+@font-face {
+font-family: "Pretendard_Bold";
+src: url("../img/fonts/Pretendard-Bold.otf");
+}
+@font-face {
+font-family: "Pretendard_SemiBold";
+src: url("../img/fonts/Pretendard-SemiBold.otf");
+}
+@font-face {
+font-family: "Pretendard_Medium";
+src: url("../img/fonts/Pretendard-Medium.otf");
+}
+@font-face {
+font-family: "Pretendard_Regular";
+src: url("../img/fonts/AppleSDGothicNeoR.otf");
+}
+@font-face {
+font-family: "Pretendard_Light";
+src: url("../img/fonts/Pretendard-Light.otf");
+}
+@font-face {
+font-family: "Pretendard_ExtraLight";
+src: url("../img/fonts/Pretendard-ExtraLight.otf");
+}
+@font-face {
+font-family: "Pretendard_Thin";
+src: url("../img/fonts/Pretendard-Thin.otf");
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+box-sizing: border-box;
+}
+* {
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+html {
+scroll-behavior: smooth;
+}
+/* img { -webkit-user-drag: none; user-drag: none; } */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+display: block;
+}
+img {
+display: block;
+}
+body {
+line-height: 1;
+overflow-x: hidden;
+/* cursor: none; */
+}
+ol,
+ul {
+list-style: none;
+}
+blockquote,
+q {
+quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+content: "";
+content: none;
+}
+a {
+text-decoration: none;
+color: inherit;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+body {
+width: 100vw;
+height: auto;
+background-color: #fff;
+font-family: "Pretendard_Medium";
+}
+::-webkit-scrollbar {
+width: 0.8vw;
+}
+::-webkit-scrollbar-thumb {
+background-color: #3a1c1c;
+border-radius: 10px;
+box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.507);
+}
+
+::-webkit-scrollbar-track {
+background-color: #fff4e3;
+}
+body::-webkit-scrollbar-track {
+box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.507);
+}
+.grid {
+position: absolute;
+left: 0;
+top: 0;
+z-index: 100;
+opacity: 20%;
+width: 100vw;
+}
+main {
+z-index: 1;
+background-color: #fff;
+}
+#wrap {
+width: 100%;
+height: auto;
+/* overflow-x: hidden; 스티키가 안됨 이것떄문에 */
+}
+/* * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html,
+body {
+width: 100%;
+overflow-x: hidden;
+font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR",
+    system-ui, sans-serif;
+background-color: #f5f5f5;
+color: #3b3b3b;
+}
+body {
+font-size: 0.8vw;
+line-height: 1.6;
+}
+a {
+color: inherit;
+text-decoration: none;
+} */
+img {
+display: block;
+max-width: 100%;
+}
+.page {
+width: 100vw;
+background-color: #f5f5f5;
+}
+.section {
+width: 90vw;
+margin: 0 auto;
+}
+.section + .section {
+margin-top: 6vw;
+}
+
+/* 푸터 */
+.footer {
+width: 100vw;
+background-color: #3a3636;
+color: #fff;
+padding: 11vw 0 8vw;
+margin-top: 50vw;
+}
+
+.footer-inner {
+width: 90vw;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.footer-left {
+display: flex;
+align-items: center;
+gap: 1vw;
+}
+
+.footer-avatar {
+width: 10vw;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 5vw;
+}
+
+.footer-main {
+font-size: calc(100vw * 45 / 1920);
+font-family: "Pretendard_Medium";
+margin-left: 2vw;
+}
+
+.footer-copy {
+font-size: calc(100vw * 25 / 1920);
+color: #c0c0c0;
+margin-top: 2vw;
+margin-left: 2vw;
+}
+
+/**/
+.gogo-hero {
+width: 100vw;
+height: 55vw;
+/* display: flex;
+    align-items: center;
+    justify-content: center; */
+background-color: #ac9e98;
+}
+.gogo-inner {
+width: 100vw;
+height: 55vw;
+overflow: hidden;
+display: flex;
+/* box-shadow: 0 1.2vw 3vw rgba(0, 0, 0, 0.12); */
+}
+
+/* 왼쪽 패널 */
+.gogo-left {
+background-color: #ffffff;
+padding: 7vw 1vw 9vw 3.4vw;
+width: 32vw;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.gogo-heading-wrap {
+margin-bottom: 5vw;
+}
+
+.gogo-heading {
+font-size: calc(100vw * 40 / 1920);
+font-family: "Pretendard_Bold";
+line-height: 1.2;
+letter-spacing: -0.04em;
+margin-bottom: 1vw;
+}
+
+.gogo-divider {
+width: 19vw;
+height: 0.15vw;
+background-color: #808080;
+margin-bottom: 3vw;
+}
+
+.gogo-info-grid {
+display: grid;
+grid-template-columns: 5vw 1fr;
+row-gap: 0.2vw;
+column-gap: 0vw;
+font-size: calc(100vw * 20 / 1920);
+font-family: "Pretendard_Medium";
+}
+
+.gogo-info-label {
+font-size: calc(100vw * 20 / 1920);
+font-family: "Pretendard_Medium";
+color: #767676;
+}
+
+.gogo-info-value {
+color: #444;
+line-height: 1.4;
+}
+
+.gogo-desc {
+margin-top: 2.8vw;
+font-size: calc(100vw * 18 / 1920);
+font-family: "Pretendard_Medium";
+color: #3f3f3f;
+line-height: 1.5;
+}
+.gogo-buttons {
+display: flex;
+gap: 0.5vw;
+flex-wrap: wrap;
+}
+.gogo-btn {
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 0.6vw;
+width: 12vw;
+height: 2.5vw;
+border-radius: 2vw;
+border: 0.08vw solid #dedede;
+background-color: #ffffff;
+font-size: calc(100vw * 15 / 1920);
+font-family: "Pretendard_Medium";
+cursor: pointer;
+transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.gogo-btn-icon {
+width: 1.4vw;
+height: 1.4vw;
+border-radius: 50%;
+background-color: #504242;
+color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: calc(100vw * 20 / 1920);
+}
+
+.gogo-btn:hover {
+background-color: #f7efed;
+transform: translateY(-0.15vw);
+box-shadow: 0 0.7vw 1.6vw rgba(0, 0, 0, 0.12);
+}
+
+/* 오른쪽 비주얼 */
+.gogo-right {
+position: relative;
+overflow: hidden;
+width: 70vw;
+padding: 0;
+margin: 0;
+}
+.gogo-right-inner {
+position: relative;
+width: 100%;
+height: 100%;
+}

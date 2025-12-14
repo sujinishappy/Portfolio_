@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Click Pop Game (단일 HTML) — 사용자 이미지 클래스 지원</title>
+<style>
+  :root{
+    --bg:#f7fafc;
+    --card:#ffffff;
+    --accent:#6366f1;
+    --aspect-padding: 175.7%;
+    --sprite-size: 9%;
+  }
+
+  html,body{height:100%;margin:0;font-family:Inter, "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+  body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#eef2ff 0%, #f8fafc 100%);padding:20px;box-sizing:border-box;}
+  .wrap{width:360px; max-width:92vw;}
+  .hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:12px}
+  .hud .left{display:flex;gap:14px;align-items:center}
+  .stat{background:rgba(255,255,255,0.9);padding:8px 10px;border-radius:10px;box-shadow:0 6px 16px rgba(15,23,42,0.06);text-align:center}
+  .stat .label{font-size:12px;color:#6b7280}
+  .stat .value{font-weight:700;font-size:18px;color:#111827}
+  .controls{display:flex;gap:8px;align-items:center}
+  button.btn{padding:8px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+  button.play{background:var(--accent);color:white}
+  button.stop{background:#ef4444;color:white}
+  button.ghost{background:transparent;border:1px solid #e5e7eb;color:#111827}
+
+  .playfield{position:relative;background:linear-gradient(180deg,#fff 0%, #f3f4f6 100%);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.07)}
+  .playfield .inner{width:100%;padding-top:var(--aspect-padding);position:relative}
+  .arena{position:absolute;inset:0}
+
+  /* sprite button uses an <img> element by default, but you can style via classes below */
+  .sprite-btn{position:absolute;transform:translate(-50%,-50%);padding:0;border:0;background:transparent;cursor:pointer}
+  .sprite-btn img{display:block;width:100%;height:auto;user-select:none;pointer-events:none;border-radius:14%}
+  /* if user wants to use background-image via class (div instead of img), support below */
+  .sprite-box{display:block;width:100%;height:100%;background-size:cover;background-position:center;border-radius:14%}
+
+  /* floating score feedback */
+  .float-score{
+    position:absolute;
+    transform:translate(-50%,-100%);
+    font-weight:800;
+    font-size:16px;
+    text-shadow:0 6px 18px rgba(2,6,23,0.18);
+    pointer-events:none;
+    opacity:1;
+    transition: transform 900ms cubic-bezier(.2,.8,.2,1), opacity 900ms linear;
+  }
+
+  /* explosion GIF/image */
+  .explosion-gif{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    width:calc(var(--sprite-size) * 2); /* a bit larger */
+    height:auto;
+  }
+
+  /* overlay end */
+  .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);}
+  .card{background:white;padding:18px;border-radius:12px;text-align:center;max-width:320px;box-shadow:0 12px 30px rgba(2,6,23,0.12)}
+  .card h2{margin:0 0 8px;font-size:20px}
+  .card p{margin:0 0 12px;font-size:16px}
+  .footer-note{font-size:12px;color:#6b7280;margin-top:8px}
+
+  @media (min-width:520px){ .wrap{width:420px} }
+
+  /* === 예시: 사용자가 제공할 이미지/클래스 스타일 ===
+     아래는 예시입니다. 실제로는 사용자가 만든 클래스명으로 대체하세요.
+     예: .my-sprite-1 { background-image: url('path/to/image1.png'); }
+  */
+  /* .my-sprite-1 { background-image: url('sprites/img1.png'); }
+     .my-sprite-2 { background-image: url('sprites/img2.png'); }
+     .my-sprite-3 { background-image: url('sprites/img3.png'); } */
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hud">
+      <div class="left">
+        <div class="stat">
+          <div class="label">남은 시간</div>
+          <div id="time" class="value">1:00</div>
+        </div>
+        <div class="stat">
+          <div class="label">점수</div>
+          <div id="score" class="value">0</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="startBtn" class="btn play">게임 시작</button>
+        <button id="stopBtn" class="btn stop" style="display:none">중단</button>
+      </div>
+    </div>
+
+    <div class="playfield">
+      <div class="inner">
+        <div id="arena" class="arena" aria-live="polite"></div>
+      </div>
+
+      <div id="endOverlay" style="display:none" class="overlay">
+        <div class="card">
+          <h2>게임 종료</h2>
+          <p>최종 점수: <strong id="finalScore">0</strong></p>
+          <div style="display:flex;gap:8px;justify-content:center">
+            <button id="retryBtn" class="btn play">다시하기</button>
+            <button id="resetBtn" class="btn ghost">메인으로</button>
+          </div>
+          <div class="footer-note">팝하면 +10점(단, 1번 이미지는 -10점), 60초 동안 플레이하세요.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/*
+  수정된 Click Pop Game
+  - 사용자 이미지 클래스 사용 지원
+  - 인덱스 0 (1번) 클릭 시 -10점
+  - 터지는 모션으로 GIF 사용 (EXPLOSION_GIF_SRC에 경로 넣기)
+  - 플로팅 텍스트 +10 / -10
+*/
+
+/* ====== 사용자 설정: 여기를 본인에 맞게 수정하세요 ====== */
+/*
+  spriteClasses: 사용할 이미지(또는 클래스) 목록.
+  두 가지 방식 중 하나로 사용:
+  1) 클래스 방식: 'class:your-classname' — 버튼 안에 div.sprite-box로 클래스 적용 (background-image 이용)
+  2) img 방식: 'img:/path/to/file.png' — 버튼 안에 <img src="...">
+  3) dataURL 방식: 'imgdata:...' — data URL을 직접 넣음
+  예:
+    const spriteClasses = ['class:my-sprite-1','class:my-sprite-2','img:/assets/spr3.png']
+  (요청대로 '1번 이미지'는 배열의 인덱스 0 입니다)
+*/
+const spriteClasses = [
+  /* 기본 예시 — 실제로 사용자의 클래스명 또는 이미지 경로로 바꿔주세요 */
+  'class:my-sprite-1', // <-- 이게 1번(인덱스 0)입니다: 클릭하면 -10점
+  'class:my-sprite-2',
+  'class:my-sprite-3'
+];
+
+// 폭발 GIF (사용자가 넣을 GIF 경로). 비워두면 기존 SVG 효과를 사용합니다.
+const EXPLOSION_GIF_SRC = ''; // 예: '/assets/explosion.gif' 또는 'https://.../exp.gif'
+
+/* ====== 내부 상수 (수정 불필요) ====== */
+const GAME_DURATION = 60; // sec
+const arena = document.getElementById('arena');
+const timeEl = document.getElementById('time');
+const scoreEl = document.getElementById('score');
+const finalScoreEl = document.getElementById('finalScore');
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const endOverlay = document.getElementById('endOverlay');
+const retryBtn = document.getElementById('retryBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+let spawnTimer = null;
+let gameTimer = null;
+let startTs = 0;
+let timeLeft = GAME_DURATION;
+let score = 0;
+let idSeq = 1;
+
+function rand(min,max){ return Math.random()*(max-min)+min; }
+function formatTime(sec){ const m = Math.floor(sec/60); const s = sec % 60; return m + ':' + String(s).padStart(2,'0'); }
+function updateHud(){ timeEl.textContent = formatTime(timeLeft); scoreEl.textContent = score; }
+
+/* floating score feedback */
+function showFloat(xPct, yPct, text, positive){
+  const id = 'f' + (idSeq++);
+  const el = document.createElement('div');
+  el.className = 'float-score';
+  el.id = id;
+  el.style.left = xPct + '%';
+  el.style.top = yPct + '%';
+  el.style.color = positive ? '#10b981' : '#ef4444';
+  el.textContent = text;
+  arena.appendChild(el);
+  // trigger animation
+  requestAnimationFrame(()=>{
+    el.style.transform = 'translate(-50%,-160%) scale(1.05)';
+    el.style.opacity = '0';
+  });
+  setTimeout(()=>{ try{ el.remove(); }catch(e){} }, 900);
+}
+
+/* spawn a sprite using either class-based box or img-based element */
+function spawnSprite(){
+  const id = idSeq++;
+  const x = rand(6,94);
+  const y = rand(8,92);
+  const typeIndex = Math.floor(rand(0, spriteClasses.length));
+  const spec = spriteClasses[typeIndex] || '';
+  const btn = document.createElement('button');
+  btn.className = 'sprite-btn';
+  btn.style.left = x + '%';
+  btn.style.top = y + '%';
+  btn.style.width = 'var(--sprite-size)';
+  btn.dataset.sid = id;
+  btn.dataset.type = typeIndex;
+  btn.dataset.x = x;
+  btn.dataset.y = y;
+
+  // interpret spec
+  if(spec.startsWith('class:')){
+    const cls = spec.slice(6);
+    const box = document.createElement('div');
+    box.className = 'sprite-box ' + cls;
+    btn.appendChild(box);
+  } else if(spec.startsWith('img:')){
+    const src = spec.slice(4);
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'sprite';
+    btn.appendChild(img);
+  } else if(spec.startsWith('imgdata:')){
+    const data = spec.slice(8);
+    const img = document.createElement('img');
+    img.src = data;
+    img.alt = 'sprite';
+    btn.appendChild(img);
+  } else {
+    // fallback: tiny placeholder SVG as data URL
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect rx='18' width='120' height='120' fill='%23ffd166'/><text x='50%' y='55%' font-size='36' font-family='Arial' text-anchor='middle' fill='%232b2b2b'>?</text></svg>`;
+    const img = document.createElement('img');
+    img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    img.alt = 'sprite';
+    btn.appendChild(img);
+  }
+
+  // click handler
+  btn.addEventListener('click', function(ev){
+    ev.stopPropagation();
+    if (btn.disabled) return;
+    btn.disabled = true;
+    // remove sprite immediately
+    btn.remove();
+
+    // scoring logic: index 0 is the "bad" one: -10 points
+    const idx = Number(btn.dataset.type) || 0;
+    if(idx === 0){
+      score -= 10;
+      showFloat(x, y, '-10', false);
+    } else {
+      score += 10;
+      showFloat(x, y, '+10', true);
+    }
+    updateHud();
+
+    // explosion effect (GIF or fallback SVG)
+    if(EXPLOSION_GIF_SRC){
+      addExplosionGif(x, y, 1000);
+    } else {
+      addExplosionSVG(x, y);
+    }
+
+    // sound
+    playPop();
+  });
+
+  arena.appendChild(btn);
+
+  // auto-remove after 5s if not clicked
+  setTimeout(()=>{ try{ if (btn.parentNode) btn.remove(); }catch(e){} }, 5000);
+}
+
+function addExplosionSVG(x, y){
+  const id = 'e' + (idSeq++);
+  const wrap = document.createElement('div');
+  wrap.className = 'explosion';
+  wrap.style.left = x + '%';
+  wrap.style.top = y + '%';
+  wrap.id = id;
+
+  const fx = document.createElement('div');
+  fx.className = 'fx';
+  fx.style.width = '96px';
+  fx.style.height = '96px';
+  fx.style.borderRadius = '50%';
+  fx.style.animation = 'popScale 700ms cubic-bezier(.2,.8,.2,1) forwards';
+  fx.innerHTML = `<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+    <radialGradient id="g${id}" cx="50%" cy="40%"><stop offset="0%" stop-color="#fff0"/><stop offset="25%" stop-color="#ffb57a"/><stop offset="100%" stop-color="#ff7a3d"/></radialGradient>
+    <circle cx="48" cy="48" r="30" fill="url(#g${id})" />
+  </svg>`;
+  wrap.appendChild(fx);
+  arena.appendChild(wrap);
+  setTimeout(()=>{ try{ wrap.remove(); }catch(e){} }, 750);
+}
+
+function addExplosionGif(x, y, duration = 1000){
+  const id = 'g' + (idSeq++);
+  const img = document.createElement('img');
+  img.className = 'explosion-gif';
+  img.src = EXPLOSION_GIF_SRC;
+  img.style.left = x + '%';
+  img.style.top = y + '%';
+  img.id = id;
+  arena.appendChild(img);
+  setTimeout(()=>{ try{ img.remove(); }catch(e){} }, duration);
+}
+
+function playPop(){
+  try {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if(!Ctx) return;
+    const ctx = new Ctx();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = 'triangle';
+    o.frequency.value = 880 + Math.random()*120;
+    g.gain.value = 0.001;
+    o.connect(g);
+    g.connect(ctx.destination);
+    const now = ctx.currentTime;
+    g.gain.setValueAtTime(0.001, now);
+    g.gain.exponentialRampToValueAtTime(0.5, now + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, now + 0.11);
+    o.start(now);
+    o.stop(now + 0.12);
+    setTimeout(()=>{ try{ ctx.close(); }catch(e){} }, 200);
+  } catch(e){}
+}
+
+function startGame(){
+  clearIntervals();
+  arena.innerHTML = '';
+  score = 0;
+  timeLeft = GAME_DURATION;
+  updateHud();
+  endOverlay.style.display = 'none';
+  startBtn.style.display = 'none';
+  stopBtn.style.display = 'inline-block';
+
+  spawnTimer = setInterval(()=>{
+    const count = Math.random() < 0.7 ? 1 : 2;
+    for(let i=0;i<count;i++) spawnSprite();
+  }, 700);
+
+  startTs = Date.now();
+  gameTimer = setInterval(()=>{
+    const elapsed = Math.floor((Date.now() - startTs)/1000);
+    const left = Math.max(0, GAME_DURATION - elapsed);
+    timeLeft = left;
+    updateHud();
+    if(left <= 0) finishGame();
+  }, 250);
+}
+
+function stopGame(){
+  clearIntervals();
+  startBtn.style.display = 'inline-block';
+  stopBtn.style.display = 'none';
+}
+
+function finishGame(){
+  clearIntervals();
+  Array.from(arena.querySelectorAll('.sprite-btn')).forEach(n=>n.remove());
+  finalScoreEl.textContent = score;
+  endOverlay.style.display = 'flex';
+  startBtn.style.display = 'inline-block';
+  stopBtn.style.display = 'none';
+}
+
+function clearIntervals(){
+  if(spawnTimer){ clearInterval(spawnTimer); spawnTimer=null; }
+  if(gameTimer){ clearInterval(gameTimer); gameTimer=null; }
+}
+
+startBtn.addEventListener('click', startGame);
+stopBtn.addEventListener('click', ()=>{ stopGame(); endOverlay.style.display = 'none'; });
+retryBtn.addEventListener('click', ()=>{ startGame(); });
+resetBtn.addEventListener('click', ()=>{ endOverlay.style.display = 'none'; score = 0; timeLeft = GAME_DURATION; updateHud(); arena.innerHTML = ''; });
+
+updateHud();
+arena.addEventListener('mousedown', (e)=> e.preventDefault());
+
+/* Optional: expose functions for debugging in console */
+window.__clickpop = {
+  spawnSprite, spriteClasses, setExplosion(src){ EXPLOSION_GIF_SRC = src; }
+};
+</script>
+
+<!-- CSS keyframes used by SVG explosion fallback -->
+<style>
+@keyframes popScale {
+  0% { transform: scale(0.2); opacity: 0; filter:blur(10px); }
+  30% { transform: scale(1.05); opacity: 1; filter:blur(0px); }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+</style>
+</body>
+</html>
